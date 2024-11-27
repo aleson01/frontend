@@ -95,7 +95,7 @@ export function OrderProvider({ children }: OrderProviderProps){
     setIsOpen(false);
 
   }
-
+  
   return(
     <OrderContext.Provider 
       value={{ 
