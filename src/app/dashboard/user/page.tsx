@@ -34,19 +34,27 @@ export default async function User(){
 
       <section className={styles.containerHeader}>
         
-        <h1>Usuários</h1>
+      <h1>Lista de Usuários</h1>
+      
         <button>
           <RefreshCw size={24} color='#3fffa3'/>
         </button>
       </section>
 
       <section className={styles.listOrders}>
+        {users.length === 0 && (
+          <span className={styles.emptyItem}>
+            Nenhum usuário cadastrada no momento...
+            </span>
+        )}
+
         {users.map(user =>(
           <button 
-            key={user.id}>
-              <div className={styles.tag}>
-                <span> Usuario {user.name}</span>
-              </div>
+            key={user.id}
+            className={styles.orderItem}>
+              <div className={styles.tag}></div>
+                <span> Usuario: {user.name}</span>
+              
           </button>
         ))}
       </section> 

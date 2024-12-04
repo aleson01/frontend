@@ -18,7 +18,6 @@ export default function Signup(){
 
     if( name === "" || email === "" || password === "" || level === ""){
 
-      toast.warning("Preencha todos os campos!")
       return;
     }
 
@@ -32,7 +31,6 @@ export default function Signup(){
 
     }catch(err){
       console.log(err);
-      toast.warning("Falha ao cadastrar Usuario!")
       return;
     }
     redirect("/dashboard")
@@ -65,14 +63,6 @@ export default function Signup(){
               placeholder="Digite seu email..."
               className={styles.input}
             />
-
-            <select
-            className={styles.input}
-            name="level">
-              <option value="gar">Garçom</option>
-              <option value="coz">Cozinha</option>
-              <option value="adm">Administrador</option>
-            </select>
 
             <input 
               type="password"
