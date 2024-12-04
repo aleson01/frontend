@@ -13,18 +13,20 @@ export default function Signup(){
     const name = formData.get("name")
     const email = formData.get("email")
     const password = formData.get("password")
+    const level = formData.get("level")
 
   
-    if( name === "" || email === "" || password === ""){
+    if( name === "" || email === "" || password === "" || password === ""){
       console.log("PREENCHA TODOS OS CAMPOS")
       return;
     }
 
     try{
-      await api.post("/auth/usuario", {
+      await api.post("/user", {
         name,
         email,
-        password
+        password,
+        level
       })
 
     }catch(err){
@@ -70,15 +72,19 @@ export default function Signup(){
               placeholder="***********"
               className={styles.input}
             />
+            <select
+            name="level"
+            required
+            className={styles.select}>
+              <option value="coz">Cozinha</option>
+              <option value="gar">Garçom</option>
+              <option value="adm">Administrador</option>
+            </select>
 
             <button type="submit" className={styles.button}>
               Cadastrar
             </button>
           </form>
-
-          <Link href="/" className={styles.text}>
-            Já possui uma conta? Faça o ligin
-          </Link>
 
         </section>
 
