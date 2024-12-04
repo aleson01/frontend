@@ -18,7 +18,7 @@ export default function Signup(){
 
     if( name === "" || email === "" || password === "" || level === ""){
 
-      console.log("PREENCHA TODOS OS CAMPOS")
+      toast.warning("Preencha todos os campos!")
       return;
     }
 
@@ -31,8 +31,9 @@ export default function Signup(){
       })
 
     }catch(err){
-      console.log("error")
-      console.log(err)
+      console.log(err);
+      toast.warning("Falha ao cadastrar Usuario!")
+      return;
     }
     redirect("/dashboard")
   }
@@ -47,7 +48,7 @@ export default function Signup(){
         />
 
         <section className={styles.login}>
-        <h1>Novo USUÁRIO</h1>
+        <h1 className={styles.login}>Novo USUÁRIO</h1>
           <form action={handleRegister}>
             <input 
               type="text"
