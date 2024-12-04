@@ -4,6 +4,7 @@ import styles from '../page.module.scss'
 import logoImg from '/public/logopizzaria.png'
 import { api } from '@/services/api'
 import { redirect } from 'next/navigation'
+import { toast } from 'sonner'
 
 export default function Signup(){
 
@@ -13,26 +14,28 @@ export default function Signup(){
     const name = formData.get("name")
     const email = formData.get("email")
     const password = formData.get("password")
+    const level = formData.get("level")
 
-  
-    if( name === "" || email === "" || password === ""){
-      console.log("PREENCHA TODOS OS CAMPOS")
+    if( name === "" || email === "" || password === "" || level === ""){
+
+      toast.warning("Preencha todos os campos!")
       return;
     }
 
     try{
-      await api.post("/auth/usuario", {
+      await api.post("/user", {
         name,
         email,
-        password
+        password,
+        level
       })
 
     }catch(err){
-      console.log("error")
-      console.log(err)
+      console.log(err);
+      toast.warning("Falha ao cadastrar Usuario!")
+      return;
     }
-
-    redirect("/")
+    redirect("/dashboard")
   }
 
   return(
@@ -45,7 +48,7 @@ export default function Signup(){
         />
 
         <section className={styles.login}>
-          <h1>Criando sua conta</h1>
+        <h1 className={styles.login}>Novo USUÁRIO</h1>
           <form action={handleRegister}>
             <input 
               type="text"
@@ -63,6 +66,14 @@ export default function Signup(){
               className={styles.input}
             />
 
+            <select
+            className={styles.input}
+            name="level">
+              <option value="gar">Garçom</option>
+              <option value="coz">Cozinha</option>
+              <option value="adm">Administrador</option>
+            </select>
+
             <input 
               type="password"
               required
@@ -70,15 +81,19 @@ export default function Signup(){
               placeholder="***********"
               className={styles.input}
             />
+            <select
+            name="level"
+            required
+            className={styles.select}>
+              <option value="coz">Cozinha</option>
+              <option value="gar">Garçom</option>
+              <option value="adm">Administrador</option>
+            </select>
 
             <button type="submit" className={styles.button}>
               Cadastrar
             </button>
           </form>
-
-          <Link href="/" className={styles.text}>
-            Já possui uma conta? Faça o ligin
-          </Link>
 
         </section>
 

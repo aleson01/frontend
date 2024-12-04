@@ -29,6 +29,7 @@ export function Form({users}: Props){
     const level = formData.get("level")
 
     if(!name || !email || !password || !level){
+
       toast.warning("Preencha todos os campos!")
       return;
     }
@@ -65,12 +66,6 @@ export function Form({users}: Props){
       <h1>Novo USUÁRIO</h1>
 
       <form className={styles.form} action={handleRegisterUser}>
-        <label>Privilégio</label>
-        <select name="level">
-          <option value= "gar"> Garçom</option>
-          <option value= "coz"> Cozinha</option>
-          <option value= "adm"> Administrador</option>
-        </select>
 
         <label>Nome</label>
         <input 
@@ -96,7 +91,7 @@ export function Form({users}: Props){
           placeholder="Digite a senha..."
           required
           className={styles.input}
-        />     
+        />
 
         <Button name="Cadastrar Usuário" />
 
