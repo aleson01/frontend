@@ -4,12 +4,10 @@ import { use } from 'react'
 import styles from './styles.module.scss'
 import { RefreshCw } from 'lucide-react'
 import { OrderProps } from '@/lib/order.type'
-import { Modalorder } from '@/app/dashboard/components/modal'
+import { Modalorder } from '../modal'
 import { OrderContext } from '@/providers/order'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
-import { api } from '@/services/api'
-import { orderOpen } from '../openOrder'
 
 interface Props{
   orders: OrderProps[]
