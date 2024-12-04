@@ -16,8 +16,8 @@ export default function Signup(){
     const password = formData.get("password")
     const level = formData.get("level")
 
-  
     if( name === "" || email === "" || password === "" || level === ""){
+
       console.log("PREENCHA TODOS OS CAMPOS")
       return;
     }
@@ -80,6 +80,14 @@ export default function Signup(){
               placeholder="***********"
               className={styles.input}
             />
+            <select
+            name="level"
+            required
+            className={styles.select}>
+              <option value="coz">Cozinha</option>
+              <option value="gar">Garçom</option>
+              <option value="adm">Administrador</option>
+            </select>
 
             <button type="submit" className={styles.button}>
               Cadastrar
