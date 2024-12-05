@@ -14,12 +14,7 @@ interface Props{
 }
 
 export function Orders({ orders }: Props){
-  const { isOpen, onRequestOpen } = use(OrderContext)
   const router = useRouter();
-
-  async function handleDetailOrder(order_id: string){
-    await onRequestOpen(order_id)
-  }
 
   function handleRefresh(){
     router.refresh();
@@ -49,7 +44,7 @@ export function Orders({ orders }: Props){
           <button
             key={order.id}
             className={styles.orderItem}
-            onClick={ () => handleDetailOrder(order.id)}
+            //onClick={ () => handleDetailOrder(order.id)}
           >
             <div className={styles.tag}></div>
             <span>Mesa {order.table}</span>
@@ -58,8 +53,6 @@ export function Orders({ orders }: Props){
       </section>
      
     </main>
-
-    { isOpen && <Modalorder/> }
   </>
   )
 }

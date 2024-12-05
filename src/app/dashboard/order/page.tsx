@@ -28,8 +28,9 @@ export default function Order(){
       console.log(err);
       return;
     })
-    toast.success("Logout feito com Sucesso")
-    redirect("/dashboard")
+    //toast.success("Logout feito com Sucesso")
+ 
+    redirect("/dashboard/item/${data.table}")
 
   }
 
