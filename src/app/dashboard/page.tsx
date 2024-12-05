@@ -3,6 +3,7 @@ import { api } from '@/services/api'
 import { getCookieServer } from '@/lib/cookieServer'
 import { OrderProps } from '@/lib/order.type'
 
+
 async function getOrders(): Promise<OrderProps[] | []>{
   try{
     const token = await getCookieServer();

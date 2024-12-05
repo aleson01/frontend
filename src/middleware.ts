@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCookieServer } from '@/lib/cookieServer'
 import { api } from "@/services/api"
+import { headers } from 'next/headers';
 
 export async function middleware(req: NextRequest){
   const { pathname } = req.nextUrl

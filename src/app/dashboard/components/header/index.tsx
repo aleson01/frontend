@@ -33,6 +33,10 @@ toast.success("Logout feito com Sucesso")
         </Link>
 
         <nav>
+          <Link href="/dashboard/user">
+            Usuário
+          </Link>
+          
           <Link href="/dashboard/order">
             Mesa
           </Link>

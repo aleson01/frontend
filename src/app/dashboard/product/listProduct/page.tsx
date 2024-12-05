@@ -2,27 +2,27 @@ import styles from './styles.module.scss'
 import { getCookieServer } from '@/lib/cookieServer'
 import {ProductProps} from '@/lib/product.type'
 import { api } from '@/services/api'
-import { RefreshCw } from 'lucide-react'
+import { RefreshCw, Trash2 } from 'lucide-react'
 
 async function getProduct():Promise<ProductProps[] | []> {
-    try{
-      const token = await getCookieServer();
+  "use server"
+  try{
+    const token = await getCookieServer();
   
-      const response = await api.get("/product", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-  
-      return response.data || []
-  
-    }catch(err){
-      console.log(err);
-      return [];
-    }
-    
+    const response = await api.get("/product", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return response.data || []
+  }catch(err){
+    console.log(err);
+    return [];
   }
-export default async function Category(){
+}
+
+
+export default async function listProduct(){
 
     const products = await getProduct();
 
@@ -55,6 +55,7 @@ export default async function Category(){
                 ))}
             </section> 
         </main>
+
         </>
         
       )

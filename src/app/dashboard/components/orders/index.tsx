@@ -13,7 +13,7 @@ interface Props{
   orders: OrderProps[]
 }
 
-export function Orders({ orders }: Props){
+export async function Orders({ orders }: Props){
   const { isOpen, onRequestOpen } = use(OrderContext)
   const router = useRouter();
 
