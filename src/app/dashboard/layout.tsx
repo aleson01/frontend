@@ -7,8 +7,9 @@ export default function DashboardLayout({ children }:
   return(
     <>
       <Header/>
+      <OrderProvider>
         {children}
-      
+      </OrderProvider>
     </>
   )
 }

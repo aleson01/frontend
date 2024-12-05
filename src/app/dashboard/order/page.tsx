@@ -3,7 +3,6 @@ import { Button } from "@/app/dashboard/components/button"
 import { api } from '@/services/api'
 import { redirect } from 'next/navigation'
 import {getCookieServer} from '@/lib/cookieServer'
-import { toast } from 'sonner'
 
 export default function Order(){
 
@@ -28,9 +27,8 @@ export default function Order(){
       console.log(err);
       return;
     })
-    //toast.success("Logout feito com Sucesso")
  
-    redirect("/dashboard/item/${data.table}")
+    redirect(`/dashboard/item`)
 
   }
 

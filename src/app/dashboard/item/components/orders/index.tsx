@@ -4,21 +4,18 @@ import { use } from 'react'
 import styles from './styles.module.scss'
 import { RefreshCw } from 'lucide-react'
 import { OrderProps } from '@/lib/order.type'
-import { Modalorder } from '../modal'
+import { Modalorder } from '@/app/dashboard/components/modal'
 import { OrderContext } from '@/providers/order'
-import { useRouter } from 'next/navigation'
-import { toast } from 'sonner'
 
 interface Props{
   orders: OrderProps[]
 }
 
 export function Orders({ orders }: Props){
-  const router = useRouter();
+  const { isOpen, onRequestOpen } = use(OrderContext)
 
-  function handleRefresh(){
-    router.refresh();
-    toast.success("Pedidos atualizados com sucesso!")
+  async function handleDetailOrder(order_id: string){
+    await onRequestOpen(order_id)
   }
 
   return(
@@ -44,7 +41,7 @@ export function Orders({ orders }: Props){
           <button
             key={order.id}
             className={styles.orderItem}
-            //onClick={ () => handleDetailOrder(order.id)}
+            onClick={ () => handleDetailOrder(order.id)}
           >
             <div className={styles.tag}></div>
             <span>Mesa {order.table}</span>
